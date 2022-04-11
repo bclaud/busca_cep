@@ -15,5 +15,6 @@ defmodule BuscaCep.Users.User do
     user
     |> cast(attrs, [:email, :name, :password])
     |> validate_required([:email, :name, :password])
+    |> unique_constraint(:email)
   end
 end
