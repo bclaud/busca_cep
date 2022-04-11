@@ -1,3 +1,4 @@
+# credo:disable-for-this-file
 defmodule BuscaCepWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
