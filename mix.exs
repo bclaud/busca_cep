@@ -47,7 +47,8 @@ defmodule BuscaCep.MixProject do
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:bcrypt_elixir, "~> 3.0"},
       {:tesla, "~> 1.4"},
-      {:hackney, "~> 1.17"}
+      {:hackney, "~> 1.17"},
+      {:mox, "~> 1.0", only: :test}
     ]
   end
 
