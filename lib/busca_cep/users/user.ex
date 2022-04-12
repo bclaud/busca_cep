@@ -1,4 +1,7 @@
 defmodule BuscaCep.Users.User do
+  @moduledoc """
+    This module provides CRUD for users
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
