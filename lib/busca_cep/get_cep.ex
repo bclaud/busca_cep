@@ -1,11 +1,11 @@
-defmodule BuscaCep.Behaviours.GetCep do
+defmodule BuscaCep.GetCep do
   @moduledoc """
     Behaviour responsable for getting CEP info
   """
   @callback call(Strint.t()) :: {:ok, map()} | {:error, map()}
 
   def call(cep) do
-    impl().get_cep(cep)
+    impl().call(cep)
   end
 
   defp impl do
