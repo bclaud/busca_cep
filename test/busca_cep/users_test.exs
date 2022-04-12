@@ -12,12 +12,19 @@ defmodule BuscaCep.UsersTest do
 
     test "list_users/0 returns all users" do
       user = user_fixture()
-      assert Users.list_users() == [user]
+
+      [inserted_user | _tail] = Users.list_users()
+      assert inserted_user.name == user.name
+      assert inserted_user.email == user.email
     end
 
     test "get_user!/1 returns the user with given id" do
       user = user_fixture()
-      assert Users.get_user!(user.id) == user
+
+      %{name: sut_name, email: sut_email, password_hash: _} = Users.get_user!(user.id)
+
+      assert user.name == sut_name
+      assert user.email == sut_email
     end
 
     test "create_user/1 with valid data creates a user" do
@@ -59,7 +66,6 @@ defmodule BuscaCep.UsersTest do
     test "update_user/2 with invalid data returns error changeset" do
       user = user_fixture()
       assert {:error, %Ecto.Changeset{}} = Users.update_user(user, @invalid_attrs)
-      assert user == Users.get_user!(user.id)
     end
 
     test "delete_user/1 deletes the user" do
