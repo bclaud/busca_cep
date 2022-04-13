@@ -1,4 +1,7 @@
 defmodule BuscaCep.Ceps.Cep do
+  @moduledoc """
+    Cep schema and changeset
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -19,5 +22,12 @@ defmodule BuscaCep.Ceps.Cep do
     |> cast(attrs, @attrs)
     |> validate_required([:cep])
     |> unique_constraint(:cep)
+    |> sanitaze_cep()
+  end
+
+  defp sanitaze_cep(%Ecto.Changeset{changes: %{cep: cep}} = changeset) do
+    cep = String.replace(cep, "-", "")
+
+    put_change(changeset, :cep, cep)
   end
 end
