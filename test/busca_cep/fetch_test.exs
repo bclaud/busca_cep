@@ -7,20 +7,28 @@ defmodule BuscaCep.FetchTest do
   alias BuscaCep.Fetch
 
   @valid_cep %{
-    bairro: "any bairro",
-    cep: "09999-999",
-    complemento: "any complemento",
-    localidade: "Any Cidade",
-    logradouro: "Any Rua"
+    "bairro" => "any bairro",
+    "cep" => "09999-999",
+    "complemento" => "any complemento",
+    "localidade" => "Any Cidade",
+    "logradouro" => "Any Rua"
   }
 
   describe "fetch" do
     test "call/1 Returns an inserted_cep when valid Cep is provided" do
-      {:ok, cep} = Ceps.create(@valid_cep)
+      Ceps.create(@valid_cep)
 
       response = Fetch.call("09999999")
 
-      assert cep == response
+      assert {:ok,
+              %{
+                cep: "09999999",
+                complemento: "any complemento",
+                bairro: "any bairro",
+                localidade: "Any Cidade",
+                logradouro: "Any Rua",
+                id: _id
+              }} = response
     end
 
     test "call/1 Returns an cep when valid Cep is provided" do
@@ -31,7 +39,14 @@ defmodule BuscaCep.FetchTest do
 
       response = Fetch.call("09999999")
 
-      assert {:ok, @valid_cep} == response
+      assert {:ok,
+              %{
+                cep: "09999999",
+                complemento: "any complemento",
+                bairro: "any bairro",
+                localidade: "Any Cidade",
+                logradouro: "Any Rua"
+              }} = response
     end
   end
 end

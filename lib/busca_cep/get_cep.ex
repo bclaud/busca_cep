@@ -2,7 +2,8 @@ defmodule BuscaCep.GetCep do
   @moduledoc """
     Behaviour responsable for getting CEP info
   """
-  @callback call(Strint.t()) :: {:ok, map()} | {:error, map()}
+  alias BuscaCep.Ceps.Cep
+  @callback call(String.t()) :: {:ok, Cep.t()} | {:error, map()}
 
   def call(cep) do
     impl().call(cep)

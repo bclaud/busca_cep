@@ -9,7 +9,7 @@ defmodule BuscaCep.Fetch do
   def call(cep) do
     case Ceps.get_by_cep(cep) do
       {:error, _reason} -> fetch_from_api(cep)
-      {:ok, cep} -> cep
+      {:ok, _cep} = cep -> cep
     end
   end
 
@@ -21,8 +21,19 @@ defmodule BuscaCep.Fetch do
   end
 
   defp handle_cep_info(cep_info) do
-    Task.async(fn -> Ceps.create(cep_info) end)
+    Task.start_link(fn -> Ceps.create(cep_info) end)
 
-    {:ok, cep_info}
+    cep =
+      cep_info
+      |> Map.new(fn {k, v} -> {String.to_atom(k), v} end)
+      |> sanitaze_cep()
+
+    {:ok, cep}
+  end
+
+  defp sanitaze_cep(%{cep: cep} = cep_info) do
+    cep = String.replace(cep, "-", "")
+
+    %{cep_info | cep: cep}
   end
 end
