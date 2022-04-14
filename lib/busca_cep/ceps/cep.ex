@@ -5,7 +5,7 @@ defmodule BuscaCep.Ceps.Cep do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @attrs [:bairro, :cep, :complemento, :logradouro, :localidade]
+  @attrs [:bairro, :cep, :complemento, :logradouro, :localidade, :uf]
 
   schema "ceps" do
     field :bairro, :string
@@ -13,6 +13,7 @@ defmodule BuscaCep.Ceps.Cep do
     field :complemento, :string
     field :localidade, :string
     field :logradouro, :string
+    field :uf, :string
 
     timestamps()
   end

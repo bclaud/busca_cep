@@ -2,9 +2,21 @@ defmodule BuscaCep.Ceps do
   @moduledoc """
    Ceps context.
   """
-  alias BuscaCep.Repo
+  import Ecto.Query, only: [from: 2]
 
   alias BuscaCep.Ceps.Cep
+  alias BuscaCep.Repo
+
+  def list_all do
+    Repo.all(Cep)
+  end
+
+  def report_list do
+    query =
+      from c in "ceps", select: [c.cep, c.uf, c.localidade, c.logradouro, c.bairro, c.complemento]
+
+    Repo.all(query)
+  end
 
   def get_by_cep(cep) do
     cep = String.replace(cep, "-", "")

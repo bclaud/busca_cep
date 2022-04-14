@@ -48,7 +48,8 @@ defmodule BuscaCep.MixProject do
       {:bcrypt_elixir, "~> 3.0"},
       {:tesla, "~> 1.4"},
       {:hackney, "~> 1.17"},
-      {:mox, "~> 1.0", only: :test}
+      {:mox, "~> 1.0", only: :test},
+      {:nimble_csv, "~> 1.1"}
     ]
   end
 
