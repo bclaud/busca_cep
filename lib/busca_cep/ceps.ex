@@ -8,7 +8,11 @@ defmodule BuscaCep.Ceps do
 
   def get_by_cep(cep) do
     cep = String.replace(cep, "-", "")
-    Repo.get_by(Cep, cep: cep)
+
+    case Repo.get_by(Cep, cep: cep) do
+      nil -> {:error, "CEP Not found"}
+      %Cep{} = inserted_cep -> {:ok, inserted_cep}
+    end
   end
 
   def create(attrs \\ %{}) do
