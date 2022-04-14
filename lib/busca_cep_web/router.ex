@@ -5,8 +5,12 @@ defmodule BuscaCepWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", BuscaCepWeb do
+  scope "/api/v1", BuscaCepWeb do
     pipe_through :api
+
+    resources "/users", UserController, except: [:new, :edit]
+
+    get "/cep/:cep", FetchController, :fetch
   end
 
   # Enables LiveDashboard only for development

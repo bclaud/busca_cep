@@ -23,8 +23,14 @@ config :busca_cep, BuscaCepWeb.Endpoint,
 # In test we don't send emails.
 config :busca_cep, BuscaCep.Mailer, adapter: Swoosh.Adapters.Test
 
+# Configure CEP info API
+config :busca_cep, :get_cep, BuscaCep.GetCep.Mock
+
 # Print only warnings and errors during test
 config :logger, level: :warn
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+# Configures bcrypt
+config :bcrypt_elixir, :log_rounds, 4
