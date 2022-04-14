@@ -23,6 +23,9 @@ config :busca_cep, BuscaCepWeb.Endpoint,
 # In test we don't send emails.
 config :busca_cep, BuscaCep.Mailer, adapter: Swoosh.Adapters.Test
 
+# Configure CEP info API
+config :busca_cep, :get_cep, BuscaCep.GetCep.Mock
+
 # Print only warnings and errors during test
 config :logger, level: :warn
 

@@ -9,6 +9,8 @@ defmodule BuscaCepWeb.Router do
     pipe_through :api
 
     resources "/users", UserController, except: [:new, :edit]
+
+    get "/cep/:cep", FetchController, :fetch
   end
 
   # Enables LiveDashboard only for development

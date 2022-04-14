@@ -25,6 +25,9 @@ config :busca_cep, BuscaCepWeb.Endpoint,
   secret_key_base: "KW2ZLJDaesZiKN8fqADKhIsKy1ra5xcCrc07kXuPyqqESJQUm8ZFhSwnv3Kl1zYH",
   watchers: []
 
+# Configure CEP info API
+config :busca_cep, :get_cep, BuscaCep.GetCep.ViaCep
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

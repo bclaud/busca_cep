@@ -17,6 +17,8 @@ config :busca_cep, BuscaCepWeb.Endpoint,
   pubsub_server: BuscaCep.PubSub,
   live_view: [signing_salt: "wWLji89+"]
 
+# Configures tesla adapter
+config :tesla, adapter: Tesla.Adapter.Hackney
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails

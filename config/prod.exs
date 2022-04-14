@@ -14,6 +14,9 @@ config :busca_cep, BuscaCepWeb.Endpoint, cache_static_manifest: "priv/static/cac
 # Do not print debug messages in production
 config :logger, level: :info
 
+# Configure CEP info API
+config :busca_cep, :get_cep, BuscaCep.GetCep.ViaCep
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
