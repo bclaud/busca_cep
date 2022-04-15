@@ -18,6 +18,8 @@ defmodule BuscaCep.CepsReport do
     filename = now() <> "ceps.csv"
 
     File.write!(@path <> filename, data)
+
+    {:ok, filename}
   end
 
   defp put_header(ceps_row) do
@@ -25,6 +27,8 @@ defmodule BuscaCep.CepsReport do
   end
 
   defp now do
-    NaiveDateTime.utc_now() |> NaiveDateTime.to_string()
+    NaiveDateTime.utc_now()
+    |> NaiveDateTime.to_string()
+    |> String.replace(["-", ":", ".", "/"], "")
   end
 end

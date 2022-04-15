@@ -8,4 +8,6 @@ defmodule BuscaCep do
   """
 
   defdelegate fetch(cep), to: BuscaCep.Fetch, as: :call
+  defdelegate gen_report(), to: BuscaCep.CepsReport, as: :generate_all
+  defdelegate send_report(email, filename), to: BuscaCep.Emails.SendCepReport, as: :send
 end
