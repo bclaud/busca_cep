@@ -8,6 +8,7 @@ defmodule BuscaCep.Repo.Migrations.CreateCeps do
       add :complemento, :string
       add :logradouro, :string
       add :localidade, :string
+      add :uf, :string
 
       timestamps()
     end

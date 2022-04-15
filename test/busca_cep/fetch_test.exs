@@ -11,7 +11,8 @@ defmodule BuscaCep.FetchTest do
     "cep" => "09999-999",
     "complemento" => "any complemento",
     "localidade" => "Any Cidade",
-    "logradouro" => "Any Rua"
+    "logradouro" => "Any Rua",
+    "uf" => "Any UF"
   }
 
   describe "fetch" do
@@ -27,6 +28,7 @@ defmodule BuscaCep.FetchTest do
                 bairro: "any bairro",
                 localidade: "Any Cidade",
                 logradouro: "Any Rua",
+                uf: "Any UF",
                 id: _id
               }} = response
     end
@@ -45,7 +47,8 @@ defmodule BuscaCep.FetchTest do
                 complemento: "any complemento",
                 bairro: "any bairro",
                 localidade: "Any Cidade",
-                logradouro: "Any Rua"
+                logradouro: "Any Rua",
+                uf: "Any UF"
               }} = response
     end
   end

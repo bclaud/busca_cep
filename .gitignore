@@ -22,3 +22,5 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 busca_cep-*.tar
 
+.DS_Store
+priv/uploads/*

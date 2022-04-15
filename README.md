@@ -1,14 +1,44 @@
-# BuscaCep
+# Busca Cep
 
-To start your Phoenix server:
+Aplicação utilizando Elixir/Phoenix para buscar CEP.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+# Rotas:
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Cep
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+### buscar CEP
+
+- get `http://localhost:4000/api/v1/cep/{CEP}`
+
+
+### Relatório CSV com CEPs
+
+- POST `http://localhost:4000/api/v1/cep/report/{email}`
+
+<br>
+
+
+# Utilização
+
+## O Phoenix é necessário para executar a API em modo desenvolvedor
+
+```
+mix local.hex
+
+mix archive.install hex phx_new
+```
+
+## Instalação do projeto
+
+Após clonar o projeto
+
+```
+mix deps.get
+mix ecto.create
+mix ecto.migrate
+
+mix phx.server
+```
 
 ## Learn more
 
