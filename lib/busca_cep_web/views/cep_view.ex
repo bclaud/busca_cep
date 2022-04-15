@@ -1,6 +1,6 @@
 defmodule BuscaCepWeb.FetchView do
   use BuscaCepWeb, :view
-  @attrs_to_show [:bairro, :cep, :complemento, :logradouro, :localidade]
+  @attrs_to_show [:bairro, :cep, :complemento, :logradouro, :localidade, :uf]
 
   def render("show.json", %{cep: cep}) do
     data = Map.take(cep, @attrs_to_show) |> put_cep_hiphen()

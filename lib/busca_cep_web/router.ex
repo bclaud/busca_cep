@@ -11,6 +11,8 @@ defmodule BuscaCepWeb.Router do
     resources "/users", UserController, except: [:new, :edit]
 
     get "/cep/:cep", FetchController, :fetch
+
+    post "/cep/report/:email", ReportController, :gen
   end
 
   # Enables LiveDashboard only for development
