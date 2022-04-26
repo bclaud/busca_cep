@@ -37,7 +37,7 @@ defmodule BuscaCep.Users do
   """
   def get_user(id) do
     case Repo.get(User, id) do
-      nil -> {:error, %{message: "User not found"}}
+      nil -> {:error, %{message: "User Not Found"}}
       user -> {:ok, user}
     end
   end
