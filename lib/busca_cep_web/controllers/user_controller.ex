@@ -3,6 +3,7 @@ defmodule BuscaCepWeb.UserController do
 
   alias BuscaCep.Users
   alias BuscaCep.Users.User
+  alias BuscaCepWeb.Auth.Guardian, as: Auth
 
   action_fallback BuscaCepWeb.FallbackController
 
@@ -38,6 +39,14 @@ defmodule BuscaCepWeb.UserController do
 
     with {:ok, %User{}} <- Users.delete_user(user) do
       send_resp(conn, :no_content, "")
+    end
+  end
+
+  def authenticate(conn, params) do
+    with {:ok, token} <- Auth.authenticate(params) do
+      conn
+      |> put_status(:ok)
+      |> render("token.json", token: token)
     end
   end
 end

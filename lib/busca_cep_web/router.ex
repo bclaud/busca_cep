@@ -13,6 +13,8 @@ defmodule BuscaCepWeb.Router do
     pipe_through :api
 
     resources "/users", UserController, except: [:new, :edit]
+
+    post "/login", UserController, :authenticate
   end
 
   scope "/api/v1", BuscaCepWeb do

@@ -35,7 +35,12 @@ defmodule BuscaCep.Users do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user(id) do
+    case Repo.get(User, id) do
+      nil -> {:error, %{message: "User not found"}}
+      user -> {:ok, user}
+    end
+  end
 
   @doc """
   Creates a user.
