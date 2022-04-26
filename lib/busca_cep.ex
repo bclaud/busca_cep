@@ -7,7 +7,10 @@ defmodule BuscaCep do
   if it comes from the database, an external API or others.
   """
 
+  defdelegate get_user_by_id(id), to: BuscaCep.Users, as: :get_user!
+
   defdelegate fetch(cep), to: BuscaCep.Fetch, as: :call
+
   defdelegate gen_report(), to: BuscaCep.CepsReport, as: :generate_all
   defdelegate send_report(email, filename), to: BuscaCep.Emails.SendCepReport, as: :send
 end

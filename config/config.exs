@@ -42,3 +42,8 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
+
+# Configures JWT
+config :busca_cep, BuscaCepWeb.Auth.Guardian,
+  issuer: "Busca Cep",
+  secret_key: System.get_env("JWTSECRETKEY")
