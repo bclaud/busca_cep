@@ -46,7 +46,11 @@ import_config "#{config_env()}.exs"
 # Configures JWT
 config :busca_cep, BuscaCepWeb.Auth.Guardian,
   issuer: "Busca Cep",
-  secret_key: System.get_env("JWTSECRETKEY")
+  secret_key:
+    System.get_env(
+      "JWTSECRETKEY",
+      "2Us5Uckp9sysMf84Tyz0FtLYtsDDAmaZopparDfYGEFvgXaeM0VQ+RcUYqfw+DPW"
+    )
 
 # Configures JWT Pipeline
 config :busca_cep, BuscaCepWeb.Auth.Pipeline,
