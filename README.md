@@ -47,6 +47,29 @@ Não se esqueça de adicionar seu token JWT no seu header para utilizar as opera
 
 # Utilização
 
+Antes de seguir com qualquer uma das opções, é importante avisar que as configurações abaixo são apenas para ambiente de testes. 
+
+Opcionalmente, você pode alterar a chave JWT a adicionando em seu ambiente no seguinte formato:
+
+```
+JWTSECRETKEY=REALLY LONG SECRET KEY
+```
+
+
+## Opção 1:
+
+## Execute o projeto através de um container Docker.
+
+Apos clonar o projeto e com o docker devidamente instalado, execute: 
+
+```
+docker-compose build
+
+docker-compose up
+```
+
+## Opção 2:
+
 ## O Phoenix é necessário para executar a API em modo desenvolvedor
 
 ```
@@ -55,9 +78,7 @@ mix local.hex
 mix archive.install hex phx_new
 ```
 
-## Instalação do projeto
-
-Após clonar o projeto
+Após clonar o projeto e com um Banco de Dados rodando com os parametros definidos em config/dev.exs, execute:
 
 ```
 mix deps.get
@@ -66,6 +87,7 @@ mix ecto.migrate
 
 mix phx.server
 ```
+
 
 ## Learn more
 
