@@ -25,3 +25,4 @@ busca_cep-*.tar
 .DS_Store
 priv/uploads/*
 .envrc
+.envrc.backup
