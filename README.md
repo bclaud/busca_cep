@@ -47,6 +47,20 @@ Não se esqueça de adicionar seu token JWT no seu header para utilizar as opera
 
 # Utilização
 
+## Opção 1:
+
+## Execute o projeto através de um container Docker.
+
+Apos clonar o projeto e com o docker devidamente instalado, execute: 
+
+```
+docker-compose build
+
+docker-compose up
+```
+
+## Opção 2:
+
 ## O Phoenix é necessário para executar a API em modo desenvolvedor
 
 ```
@@ -57,7 +71,7 @@ mix archive.install hex phx_new
 
 ## Instalação do projeto
 
-Após clonar o projeto
+Após clonar o projeto e com um Banco de Dados rodando com os parametros definidos em config/dev.exs, execute:
 
 ```
 mix deps.get
@@ -66,6 +80,7 @@ mix ecto.migrate
 
 mix phx.server
 ```
+
 
 ## Learn more
 
