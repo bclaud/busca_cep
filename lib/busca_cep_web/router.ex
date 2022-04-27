@@ -5,10 +5,20 @@ defmodule BuscaCepWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug BuscaCepWeb.Auth.Pipeline
+  end
+
   scope "/api/v1", BuscaCepWeb do
     pipe_through :api
 
     resources "/users", UserController, except: [:new, :edit]
+
+    post "/login", UserController, :authenticate
+  end
+
+  scope "/api/v1", BuscaCepWeb do
+    pipe_through [:api, :auth]
 
     get "/cep/:cep", FetchController, :fetch
 

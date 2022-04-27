@@ -18,10 +18,10 @@ defmodule BuscaCep.UsersTest do
       assert inserted_user.email == user.email
     end
 
-    test "get_user!/1 returns the user with given id" do
+    test "get_user/1 returns the user with given id" do
       user = user_fixture()
 
-      %{name: sut_name, email: sut_email, password_hash: _} = Users.get_user!(user.id)
+      {:ok, %{name: sut_name, email: sut_email, password_hash: _}} = Users.get_user(user.id)
 
       assert user.name == sut_name
       assert user.email == sut_email
@@ -71,7 +71,7 @@ defmodule BuscaCep.UsersTest do
     test "delete_user/1 deletes the user" do
       user = user_fixture()
       assert {:ok, %User{}} = Users.delete_user(user)
-      assert_raise Ecto.NoResultsError, fn -> Users.get_user!(user.id) end
+      assert {:error, %{message: "User Not Found"}} = Users.get_user(user.id)
     end
 
     test "change_user/1 returns a user changeset" do

@@ -42,4 +42,18 @@ defmodule BuscaCepWeb.FallbackController do
     |> put_view(BuscaCepWeb.ErrorView)
     |> render("error.json", message: "CEP Not found")
   end
+
+  def call(conn, {:error, %{message: "User Not Found"}}) do
+    conn
+    |> put_status(:not_found)
+    |> put_view(BuscaCepWeb.ErrorView)
+    |> render("error.json", message: "User Not Found")
+  end
+
+  def call(conn, {:error, %{status: status, message: message}}) do
+    conn
+    |> put_status(status)
+    |> put_view(BuscaCepWeb.ErrorView)
+    |> render("error.json", message: message)
+  end
 end
